@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Búsqueda de Empleo</title>
+    <!-- FontAwesome para los iconos -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Estilos separados -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1><i class="fas fa-briefcase"></i> Mi Dashboard de Empleabilidad</h1>
+        
+        <!-- Panel de Estadísticas -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <i class="fas fa-paper-plane stat-icon"></i>
+                <div class="stat-info">
+                    <h3 id="statTotal">0</h3>
+                    <p>Total Postulaciones</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-comments stat-icon" style="color: var(--status-entrevista)"></i>
+                <div class="stat-info">
+                    <h3 id="statEntrevistas">0</h3>
+                    <p>En Entrevista</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-handshake stat-icon" style="color: var(--status-oferta)"></i>
+                <div class="stat-info">
+                    <h3 id="statOfertas">0</h3>
+                    <p>Ofertas Recibidas</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="controls-section">
+        <!-- Formulario Principal -->
+        <div class="panel">
+            <h2><i class="fas fa-plus-circle"></i> Nueva Postulación</h2>
+            <form id="jobForm">
+                <div class="form-grid">
+                    <input type="text" id="company" placeholder="Nombre de la Empresa" required>
+                    <input type="text" id="role" placeholder="Cargo / Puesto" required>
+                    <input type="url" id="link" placeholder="URL de la vacante (opcional)">
+                    <select id="modality" required>
+                        <option value="" disabled selected>Categoría (Modalidad)</option>
+                        <option value="Remoto">🏠 Remoto</option>
+                        <option value="Híbrido">🏢 Híbrido</option>
+                        <option value="Presencial">🚗 Presencial</option>
+                    </select>
+                    <select id="status" required>
+                        <option value="Postulado">🟡 Postulado</option>
+                        <option value="Contacto">🔵 En Contacto</option>
+                        <option value="Entrevista">🟣 Entrevista</option>
+                        <option value="Oferta">🟢 Oferta Recibida</option>
+                        <option value="Rechazado">🔴 Rechazado</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-submit"><i class="fas fa-save"></i> Guardar Registro</button>
+            </form>
+        </div>
+
+        <!-- Filtros -->
+        <div class="panel">
+            <h2><i class="fas fa-filter"></i> Filtrar Vista</h2>
+            <select id="filterStatus" onchange="renderJobs()">
+                <option value="Todos">Mostrar Todos los Estados</option>
+                <option value="Postulado">Solo Postulados</option>
+                <option value="Contacto">Solo En Contacto</option>
+                <option value="Entrevista">Solo Entrevistas</option>
+                <option value="Oferta">Solo Ofertas</option>
+                <option value="Rechazado">Solo Rechazados</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Contenedor de Tarjetas -->
+    <div class="jobs-grid" id="jobsContainer">
+        <!-- Las tarjetas se generan vía JavaScript -->
+    </div>
+</div>
+
+<!-- Lógica separada -->
+<script src="script.js" defer></script>
+</body>
+</html>
